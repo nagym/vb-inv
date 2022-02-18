@@ -47,7 +47,7 @@ INCS_Debug := \
 	-I/home/nagy/.cache/node-gyp/17.5.0/deps/uv/include \
 	-I/home/nagy/.cache/node-gyp/17.5.0/deps/zlib \
 	-I/home/nagy/.cache/node-gyp/17.5.0/deps/v8/include \
-	-I/home/nagy/Repos/plugin/node_modules/node-addon-api
+	-I/home/nagy/Repos/electron-quick-start/plugin/node_modules/node-addon-api
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=plugin-native' \
@@ -91,7 +91,7 @@ INCS_Release := \
 	-I/home/nagy/.cache/node-gyp/17.5.0/deps/uv/include \
 	-I/home/nagy/.cache/node-gyp/17.5.0/deps/zlib \
 	-I/home/nagy/.cache/node-gyp/17.5.0/deps/v8/include \
-	-I/home/nagy/Repos/plugin/node_modules/node-addon-api
+	-I/home/nagy/Repos/electron-quick-start/plugin/node_modules/node-addon-api
 
 OBJS := \
 	$(obj).target/$(TARGET)/src/plugin.o
