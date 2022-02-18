@@ -9,7 +9,8 @@ const { contextBridge, ipcRenderer } = require('electron')
 const asd = (buf) => ipcRenderer.invoke('asd', buf)
 
 function generate_buffer_data(size) {
-  return new Blob([new ArrayBuffer(size)], { type: 'application/octet-stream' });
+  //return new Blob([new ArrayBuffer(size)], { type: 'application/octet-stream' });
+  return new Uint8Array(size)
 };
 
 
@@ -27,17 +28,16 @@ contextBridge.exposeInMainWorld('nodeCrypto', {
 
 //Use buffer
 function exchangeBuffer() {
-  data.arrayBuffer().then(val => {
-    let first = new Uint8Array(val)
-    if (first.at(0) != 0) {
+  let first = data
+  if (first[0] != 0) {
       alert('sheeet #1');
     }
 
-    let second = new Uint8Array(asd(val))
-    if (second.at(0) != 123) {
+  asd(data).then(res => {
+    if (res[0] != 123) {
       alert('sheeet #2');
     }
-  });
+  })
 }
 
 function schedule() {

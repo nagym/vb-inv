@@ -3,6 +3,8 @@ const { app, BrowserWindow, ipcMain } = require('electron')
 const path = require('path')
 const asd = require('plugin')
 
+const met = (event, param) => asd(param)
+
 function createWindow () {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
@@ -27,7 +29,7 @@ function createWindow () {
 app.whenReady().then(() => {
   createWindow()
 
-  ipcMain.handle('asd', asd)
+  ipcMain.handle('asd', met)
 
   app.on('activate', function () {
     // On macOS it's common to re-create a window in the app when the

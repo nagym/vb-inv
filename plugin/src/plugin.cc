@@ -2,14 +2,16 @@
 
 using namespace Napi;
 
-Napi::ArrayBuffer Method(const Napi::CallbackInfo &info)
+Napi::Promise Method(const Napi::CallbackInfo &info)
 {
   Napi::Env env = info.Env();
-  auto buf = info[0].As<ArrayBuffer>();
+  auto buf = info[0].As<Uint8Array>();
 
   reinterpret_cast<unsigned char *>(buf.Data())[0] = 123;
 
-  return buf; // Napi::ArrayBuffer::New(env, buf.Data(), buf);
+  // Napi::Promise::Deferred deferred = Napi::Promise::Deferred::New(info.Env());
+
+  return Promise(env, buf); // Napi::ArrayBuffer::New(env, buf.Data(), buf);
 }
 
 Napi::Object Init(Napi::Env env, Napi::Object exports)
